@@ -1,10 +1,10 @@
 # SkillPath AI 
 **AI-Based Skill Gap & Career Path Advisor**
 
-## 📌 Overview
+##  Overview
 SkillPath AI is a simple AI-powered project that analyzes a user's current skills and identifies gaps for desired career paths. It provides personalized recommendations to help users improve their skills and achieve their career goals.
 
-## 🧠 Features
+##  Features
 - Skill gap analysis  
 - Career path recommendations  
 - Knowledge-based decision system  
@@ -12,13 +12,13 @@ SkillPath AI is a simple AI-powered project that analyzes a user's current skill
 
 
 
-## ⚙️ How It Works
+##  How It Works
 1. User inputs their current skills or desired role  
 2. The system compares input with the knowledge base  
 3. Identifies missing skills (skill gap)  
 4. Suggests improvements and career paths  
 
-## ▶️ How to Run
+##  How to Run
 
 ### 1. Create Virtual Environment
 ```bash
@@ -47,10 +47,10 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## 🛠️ Requirements
+##  Requirements
 - Python 3.x  
 
-## 🎯 Future Improvements
+##  Future Improvements
 - Add machine learning models  
 - Integrate real-time job market data  
 - Build a web-based interface  

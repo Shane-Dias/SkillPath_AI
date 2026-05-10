@@ -12,17 +12,17 @@ class CareerAdvisorApp:
         
     def get_user_input(self) -> tuple:
         print("\n" + "="*70)
-        print("🤖 AI-BASED SKILL GAP & CAREER PATH ADVISOR")
+        print(" AI-BASED SKILL GAP & CAREER PATH ADVISOR")
         print("="*70)
         
         available_jobs = list(self.analyzer.expert_system.job_requirements.keys())
-        print("\n📋 Available Career Paths:")
+        print("\n Available Career Paths:")
         for i, job in enumerate(available_jobs, 1):
             print(f"   {i}. {job}")
         
         while True:
-            print("\n💡 Tip: You can enter exact job title or number")
-            choice = input("\n💼 Enter your dream job (title or number): ").strip()
+            print("\n Tip: You can enter exact job title or number")
+            choice = input("\n Enter your dream job (title or number): ").strip()
             
             if choice.isdigit() and 1 <= int(choice) <= len(available_jobs):
                 dream_job = available_jobs[int(choice) - 1]
@@ -31,9 +31,9 @@ class CareerAdvisorApp:
                 dream_job = choice
                 break
             else:
-                print(f"❌ Job not found. Choose from: {', '.join(available_jobs)}")
+                print(f" Job not found. Choose from: {', '.join(available_jobs)}")
         
-        print(f"\n📝 Let's assess your current skills for {dream_job}")
+        print(f"\n Let's assess your current skills for {dream_job}")
         print("   (Enter skills one by one, type 'done' when finished)")
         print("   Example skills: Python, SQL, Machine Learning, Communication")
         
@@ -50,7 +50,7 @@ class CareerAdvisorApp:
                 if level in skill_levels:
                     current_skills[skill] = level
                 else:
-                    print(f"   ⚠️ Invalid level. Setting to 'beginner'")
+                    print(f"    Invalid level. Setting to 'beginner'")
                     current_skills[skill] = "beginner"
         
         return current_skills, dream_job
@@ -60,38 +60,38 @@ class CareerAdvisorApp:
             current_skills, dream_job = self.get_user_input()
             
             if not current_skills:
-                print("\n⚠️ No skills entered. Using default skills...")
+                print("\n No skills entered. Using default skills...")
                 current_skills = {"python": "beginner"}
             
-            print("\n🔍 Analyzing your skills using Expert System...")
+            print("\n Analyzing your skills using Expert System...")
             print("   (Applying inference rules to identify skill gaps)")
             analysis = self.analyzer.analyze_skills(current_skills, dream_job)
             
             self.analyzer.display_analysis(analysis)
             
-            save_choice = input("\n💾 Save detailed report? (yes/no): ").strip().lower()
+            save_choice = input("\n Save detailed report? (yes/no): ").strip().lower()
             if save_choice == 'yes':
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 filename = f"career_report_{timestamp}.json"
                 with open(filename, 'w') as f:
                     json.dump(analysis, f, indent=2)
-                print(f"\n💾 Report saved to {filename}")
+                print(f"\n Report saved to {filename}")
             
-            print("\n✅ Analysis complete! Good luck with your career journey! 🚀")
+            print("\n Analysis complete! Good luck with your career journey! ")
             
         except KeyboardInterrupt:
-            print("\n\n👋 Goodbye!")
+            print("\n\n Goodbye!")
         except Exception as e:
-            print(f"\n❌ Error: {e}")
+            print(f"\n Error: {e}")
 
 def demo_mode():
-    print("\n" + "🎬" * 35)
+    print("\n" + "" * 35)
     print("RUNNING IN DEMO MODE - Sample Analysis")
-    print("🎬" * 35)
+    print("" * 35)
     
     analyzer = SkillGapAnalyzer()
     
-    print("\n📊 Sample: Beginner Data Scientist Aspirant")
+    print("\n Sample: Beginner Data Scientist Aspirant")
     sample_skills = {
         "python": "beginner",
         "statistics": "beginner"
@@ -102,7 +102,7 @@ def demo_mode():
     analyzer.display_analysis(analysis)
     
     print("\n" + "="*70)
-    print("🧠 KNOWLEDGE REPRESENTATION (CO3)")
+    print(" KNOWLEDGE REPRESENTATION (CO3)")
     print("="*70)
     print("This expert system demonstrates CO3 through:")
     print("• Facts: Declarative knowledge representation")
@@ -118,13 +118,13 @@ def demo_mode():
     print("  - Career progression paths")
 
 if __name__ == "__main__":
-    print("\n" + "🎓" * 35)
+    print("\n" + "" * 35)
     print("AI LAB MINI PROJECT - SKILL GAP & CAREER ADVISOR")
     print("Course Outcomes: CO3 (Knowledge Representation) & CO4 (Expert System)")
-    print("🎓" * 35)
+    print("" * 35)
     
     while True:
-        print("\n📋 MAIN MENU:")
+        print("\n MAIN MENU:")
         print("1. Interactive Mode (Enter your own skills)")
         print("2. Demo Mode (See sample analyses)")
         print("3. Exit")
@@ -137,10 +137,10 @@ if __name__ == "__main__":
         elif choice == '2':
             demo_mode()
         elif choice == '3':
-            print("\n👋 Thank you for using the Skill Gap Advisor!")
+            print("\n Thank you for using the Skill Gap Advisor!")
             break
         else:
-            print("❌ Invalid choice. Please enter 1, 2, or 3.")
+            print(" Invalid choice. Please enter 1, 2, or 3.")
         
 # commands:  .\skill_advisor_env\Scripts\activate
 # python main.py

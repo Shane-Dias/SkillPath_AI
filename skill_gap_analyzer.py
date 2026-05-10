@@ -125,28 +125,28 @@ class SkillGapAnalyzer:
         """Display analysis results in a formatted way"""
         
         print("\n" + "="*70)
-        print(f"🎯 SKILL GAP ANALYSIS FOR: {analysis['dream_job'].upper()}")
+        print(f" SKILL GAP ANALYSIS FOR: {analysis['dream_job'].upper()}")
         print("="*70)
         
         if 'job_requirements' in analysis and analysis['job_requirements']:
-            print(f"\n📋 JOB REQUIREMENTS OVERVIEW:")
+            print(f"\n JOB REQUIREMENTS OVERVIEW:")
             req_skills = analysis['job_requirements'].get('required_skills', {})
             print(f"   Required Skills: {', '.join(req_skills.keys())}")
             print(f"   Experience Needed: {analysis['job_requirements'].get('experience_years', 'N/A')} years")
             print(f"   Education: {', '.join(analysis['job_requirements'].get('education', ['N/A']))}")
         
-        print(f"\n📊 READINESS SCORE: {analysis['readiness_score']}%")
+        print(f"\n READINESS SCORE: {analysis['readiness_score']}%")
         score_bar = "█" * int(analysis['readiness_score'] / 10) + "░" * (10 - int(analysis['readiness_score'] / 10))
         print(f"   [{score_bar}]")
         skills_acquired = analysis['total_skills_required'] - len(analysis['missing_skills'])
         print(f"   Skills Acquired: {skills_acquired}/{analysis['total_skills_required']}")
         
         if analysis['missing_skills']:
-            print("\n🔴 MISSING SKILLS:")
+            print("\n MISSING SKILLS:")
             table_data = []
             for skill in analysis['missing_skills']:
-                importance_icon = "🔥" if skill['importance'] == 'critical' else "📌"
-                current_display = skill['current_level'] if skill['current_level'] != 'none' else '❌ Not acquired'
+                importance_icon = "" if skill['importance'] == 'critical' else ""
+                current_display = skill['current_level'] if skill['current_level'] != 'none' else ' Not acquired'
                 table_data.append([
                     skill['name'],
                     f"{importance_icon} {skill['importance'].upper()}",
@@ -155,22 +155,22 @@ class SkillGapAnalyzer:
                 ])
             print(tabulate(table_data, headers=["Skill", "Importance", "Current Level", "Required Level"], tablefmt="grid"))
         else:
-            print("\n✅ CONGRATULATIONS! No missing skills found!")
+            print("\n CONGRATULATIONS! No missing skills found!")
         
         if analysis['learning_path']:
-            print("\n📚 RECOMMENDED LEARNING PATH:")
+            print("\n RECOMMENDED LEARNING PATH:")
             for phase in analysis['learning_path']:
                 print(f"\n  ═══ Phase {phase['phase']}: {phase['title']} ═══")
-                print(f"  ⏱️  Estimated time: {phase['estimated_weeks']} weeks")
+                print(f"    Estimated time: {phase['estimated_weeks']} weeks")
                 for skill in phase['skills']:
-                    print(f"\n    🎯 {skill}")
+                    print(f"\n     {skill}")
                     resources = [r for r in phase['resources'] if r['skill'] == skill]
                     for res in resources:
-                        print(f"       📖 {res['type']}: {res['url']}")
-                        print(f"          ⏰ {res['hours']} hours recommended")
+                        print(f"        {res['type']}: {res['url']}")
+                        print(f"           {res['hours']} hours recommended")
         
         if analysis['career_paths']:
-            print("\n🚀 SUGGESTED CAREER PROGRESSION:")
+            print("\n SUGGESTED CAREER PROGRESSION:")
             for path in analysis['career_paths']:
                 print(f"   {path['current']} → {path['next']}")
         
@@ -179,8 +179,8 @@ class SkillGapAnalyzer:
         if total_hours > 0:
             weeks_study = total_hours / 10
             months_study = weeks_study / 4
-            print(f"📈 LEARNING SUMMARY:")
-            print(f"   📚 Total learning hours: ~{total_hours} hours")
-            print(f"   📅 Recommended timeline: {weeks_study:.0f} weeks ({months_study:.1f} months)")
+            print(f" LEARNING SUMMARY:")
+            print(f"    Total learning hours: ~{total_hours} hours")
+            print(f"    Recommended timeline: {weeks_study:.0f} weeks ({months_study:.1f} months)")
         
         print("="*70 + "\n")
